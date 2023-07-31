@@ -1,5 +1,6 @@
 @server = https://texai-miniature-succotash-x9vwjq4r6cvqj4-8080.preview.app.github.dev
 @instumentos = {{server}}/api/instrumentos
+@musicos = {{server}}/api/musicos
 ###
 GET {{instumentos}}
 ###
@@ -11,3 +12,8 @@ Content-Type: application/json
     "categoria": "Viento",
     "descripcion": "Tubo de madera con orificios"
 }
+###
+POST {{musicos}}
+Content-Type: application/json
+
+{"nombre": "Otro Músico"}
