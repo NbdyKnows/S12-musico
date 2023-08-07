@@ -22,10 +22,11 @@ class PageHome extends React.Component {
                 <h1>Demo App!</h1>
                 <Titulo entidad="Instrumentos" emoji="🎸" />
                 <InstrumentoList instrumentos={this.state.instrumentos} />
+                <Link to="/nuevo-instrumento">Nuevo Instrumento</Link>
+
                 <Titulo entidad="Musicos" emoji="🎵" />
                 <MusicoList musicos={this.state.musicos} />
                 <Link to="/nuevo-musico">Nuevo Musico</Link>
-                <Link to="/nuevo-instrumento">Nuevo Instrumento</Link>
             </>
         );
 	}
@@ -53,8 +54,8 @@ class InstrumentoList extends React.Component {
 				<tbody>
 					<tr>
 						<th>Nombre</th>
-						<th>Categoría</th>
-						<th>Descripción</th>
+						<th>Acciones</th>
+						{/* {<th>Descripción</th>} */}
 					</tr>
 					{instrumentos}
 				</tbody>
@@ -82,13 +83,16 @@ class MusicoList extends React.Component {
 
 class Instrumento extends React.Component {
 	render() {
+		const id = this.props.instrumento._links.self.href.split("/").slice(-1);
 		return (
-			<tr>
-				<td>{this.props.instrumento.nombre}</td>
-				<td>{this.props.instrumento.categoria}</td>
-				<td>{this.props.instrumento.descripcion}</td>
-			</tr>
-		)
+            <tr>
+                <td>{this.props.instrumento.nombre}</td>
+                <td>
+                    <Link to={`/ver-instrumento/${id}`}>Editar</Link>
+                </td>
+                {/* {<td>{this.props.instrumento.descripcion}</td>} */}
+            </tr>
+        );
 	}
 }
 
